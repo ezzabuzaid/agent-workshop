@@ -1,6 +1,22 @@
+import { execSync } from 'node:child_process';
 import { Agent, run, tool } from '@openai/agents';
 import { z } from 'zod';
 import model from './model.ts';
+
+function resolveGithubToken(): string {
+	if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+	try {
+		return execSync(`gh auth token`, {
+			stdio: [`ignore`, `pipe`, `ignore`],
+		})
+			.toString()
+			.trim();
+	} catch {
+		return ``;
+	}
+}
+
+const githubToken = resolveGithubToken();
 
 const getGithubProfile = tool({
 	name: `get_github_profile`,
@@ -12,9 +28,7 @@ const getGithubProfile = tool({
 		const res = await fetch(`https://api.github.com/users/${login}`, {
 			headers: {
 				'User-Agent': `candidate-scout-workshop`,
-				...(process.env.GITHUB_TOKEN
-					? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-					: {}),
+				...(githubToken ? { Authorization: `Bearer ${githubToken}` } : {}),
 			},
 		});
 		if (!res.ok) return `GitHub API error ${res.status} for "${login}"`;

@@ -96,7 +96,9 @@ agent-workshop/
 │   ├── 04-mcp-github.ts       ← GitHub MCP server over stdio               (ex:04)
 │   ├── 05-handoff-triage.ts   ← Coordinator → Sourcing / Screening handoffs (ex:05)
 │   ├── 06-capstone-candidate-scout.ts ← MCP + handoffs + agent-as-tool     (ex:06)
-│   └── 07-parallel-scout.ts   ← parallel fan-out (Promise.all) + ranker    (ex:07)
+│   ├── 07-parallel-scout.ts   ← parallel fan-out (Promise.all) + ranker    (ex:07)
+│   ├── 08-web-search-tool.ts  ← hosted web search tool via webSearchTool    (ex:08)
+│   └── 09-files-tools-agent.ts ← custom read/list files tools                (ex:09)
 │
 ├── slides/
 │   ├── config.yaml            ← presenterm config (catppuccin-macchiato, mermaid scale 2)
@@ -128,6 +130,8 @@ npm run ex:04   # 04-mcp-github.ts           GitHub MCP over stdio   (needs GITH
 npm run ex:05   # 05-handoff-triage.ts       coordinator + handoffs
 npm run ex:06   # 06-capstone-candidate-scout.ts  MCP + handoffs + agent-as-tool (needs GITHUB_TOKEN)
 npm run ex:07   # 07-parallel-scout.ts       parallel fan-out + ranker
+npm run ex:08   # 08-web-search-tool.ts      hosted web search tool
+npm run ex:09   # 09-files-tools-agent.ts    custom read/list files tools
 
 npm start          # openrouter-agent.ts  warm-up weather agent
 npm run start:session  # session-memory.ts  warm-up memory demo

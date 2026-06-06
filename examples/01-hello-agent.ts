@@ -7,10 +7,8 @@ const recruiter = new Agent({
 	model,
 });
 
-const prompt =
-	process.argv.slice(2).join(` `) ||
-	`Candidate: 8y TypeScript, maintains a popular open-source state library, ex-Stripe. Fit for a senior platform role?`;
+const goal = `Candidate: 8y TypeScript, maintains a popular open-source state library, ex-Stripe. are they fit for a senior platform role?`;
 
-const result = await run(recruiter, prompt);
+const result = await run(recruiter, goal);
 
 console.log(result.finalOutput);
