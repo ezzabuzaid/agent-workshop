@@ -1,0 +1,26 @@
+{
+  "name": "openrouter-agents-tryout",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env --import tsx openrouter-agent.ts",
+    "start:session": "node --env-file=.env --import tsx session-memory.ts",
+    "ex:01": "node --env-file=.env --import tsx examples/01-hello-agent.ts",
+    "ex:02": "node --env-file=.env --import tsx examples/02-custom-tool.ts",
+    "ex:03": "node --env-file=.env --import tsx examples/03-multi-tool-agent.ts",
+    "ex:04": "node --env-file=.env --import tsx examples/04-mcp-github.ts",
+    "ex:05": "node --env-file=.env --import tsx examples/05-handoff-triage.ts",
+    "ex:06": "node --env-file=.env --import tsx examples/06-capstone-candidate-scout.ts",
+    "ex:07": "node --env-file=.env --import tsx examples/07-parallel-scout.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.11.6",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

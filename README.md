@@ -44,7 +44,7 @@ cd agent-workshop
 # Already cloned it? Pull the latest instead:
 # git pull --ff-only
 
-# 2. Install dependencies (@openai/agents, zod, tsx, typescript)
+# 2. Install dependencies
 npm install
 
 # 3. Create your local env file from the template

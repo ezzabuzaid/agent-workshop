@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif">
+  <defs>
+    <!-- Arrowhead markers. Filled in neutral gray so they read on dark and white. -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9aa0b5"/>
+    </marker>
+
+    <!-- Soft drop shadow for the central agent box -->
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1e2030" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- ============ EDGES (drawn first, under the boxes) ============ -->
+  <g fill="none" stroke="#9aa0b5" stroke-width="2.5" stroke-linecap="round">
+    <!-- LEFT: LLM -> Agent : ONE-WAY (LLM feeds the agent) -->
+    <path d="M250,98 C360,98 380,230 442,254" marker-end="url(#arrow)"/>
+    <!-- LEFT: Tools <-> Agent : TWO-WAY -->
+    <path d="M250,193 C360,193 380,250 442,264" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <!-- LEFT: Memory <-> Agent : TWO-WAY -->
+    <path d="M250,288 C360,288 380,290 442,282" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <!-- LEFT: MCP servers <-> Agent : TWO-WAY -->
+    <path d="M250,383 C360,383 380,330 442,300" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <!-- RIGHT: Agent branches into a team of three : ONE-WAY each -->
+    <path d="M698,272 C748,272 760,128 808,128" marker-end="url(#arrow)"/>
+    <path d="M698,278 C758,278 760,278 808,278" marker-end="url(#arrow)"/>
+    <path d="M698,284 C748,284 760,428 808,428" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- ============ LEFT COLUMN: capability boxes ============ -->
+  <!-- LLM (blue) -->
+  <g filter="url(#soft)">
+    <rect x="60" y="70" width="190" height="56" rx="14" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1.5"/>
+  </g>
+  <text x="155" y="105" text-anchor="middle" font-size="26" font-weight="600" fill="#1b2335">LLM</text>
+
+  <!-- Tools (green) -->
+  <g filter="url(#soft)">
+    <rect x="60" y="165" width="190" height="56" rx="14" fill="#a6da95" stroke="#74b663" stroke-width="1.5"/>
+  </g>
+  <text x="155" y="200" text-anchor="middle" font-size="26" font-weight="600" fill="#1b2a18">Tools</text>
+
+  <!-- Memory (peach) -->
+  <g filter="url(#soft)">
+    <rect x="60" y="260" width="190" height="56" rx="14" fill="#f5a97f" stroke="#d4815a" stroke-width="1.5"/>
+  </g>
+  <text x="155" y="295" text-anchor="middle" font-size="26" font-weight="600" fill="#3a2316">Memory</text>
+
+  <!-- MCP servers (teal) -->
+  <g filter="url(#soft)">
+    <rect x="60" y="355" width="190" height="56" rx="14" fill="#8bd5ca" stroke="#5cb3a6" stroke-width="1.5"/>
+  </g>
+  <text x="155" y="390" text-anchor="middle" font-size="25" font-weight="600" fill="#10302b">MCP servers</text>
+
+  <!-- ============ CENTER: the Agent hub (emphasized) ============ -->
+  <g filter="url(#soft)">
+    <rect x="442" y="224" width="256" height="92" rx="20" fill="#c6a0f6" stroke="#9a6ee0" stroke-width="2.5"/>
+  </g>
+  <text x="570" y="266" text-anchor="middle" font-size="34" font-weight="700" fill="#241634">Agent</text>
+  <text x="570" y="294" text-anchor="middle" font-size="15" font-weight="500" fill="#3a2459">the brain in a loop</text>
+
+  <!-- ============ RIGHT COLUMN: the team of three agents ============ -->
+  <!-- Team agent 1 -->
+  <g filter="url(#soft)">
+    <rect x="808" y="100" width="158" height="56" rx="14" fill="#b8c0e0" stroke="#8891b5" stroke-width="1.5"/>
+  </g>
+  <text x="887" y="135" text-anchor="middle" font-size="24" font-weight="600" fill="#1f2433">Agent</text>
+
+  <!-- Team agent 2 -->
+  <g filter="url(#soft)">
+    <rect x="808" y="250" width="158" height="56" rx="14" fill="#b8c0e0" stroke="#8891b5" stroke-width="1.5"/>
+  </g>
+  <text x="887" y="285" text-anchor="middle" font-size="24" font-weight="600" fill="#1f2433">Agent</text>
+
+  <!-- Team agent 3 -->
+  <g filter="url(#soft)">
+    <rect x="808" y="400" width="158" height="56" rx="14" fill="#b8c0e0" stroke="#8891b5" stroke-width="1.5"/>
+  </g>
+  <text x="887" y="435" text-anchor="middle" font-size="24" font-weight="600" fill="#1f2433">Agent</text>
+
+  <!-- Bracket + label for the team -->
+  <path d="M974,108 C982,108 982,118 982,128 L982,278 C982,288 984,288 988,288 C984,288 982,288 982,298 L982,428 C982,438 982,448 974,448"
+        fill="none" stroke="#9aa0b5" stroke-width="2" stroke-linecap="round"/>
+  <text x="862" y="490" text-anchor="middle" font-size="18" font-weight="600" fill="#9aa0b5">the team = Candidate Scout</text>
+</svg>

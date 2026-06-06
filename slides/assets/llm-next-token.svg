@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 24 1000 330" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">An LLM is a next-token predictor running in an autoregressive loop</title>
+  <desc id="d">Tokens so far feed into the LLM, which scores a probability distribution over the next token; the most likely token is appended to the context and the loop repeats.</desc>
+
+  <defs>
+    <!-- Arrowhead, neutral gray so it reads on dark and light -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9aa0b5"/>
+    </marker>
+    <!-- Soft drop shadow for the cards -->
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1e2030" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- ===================== MAIN FLOW: context -> LLM -> probabilities ===================== -->
+
+  <!-- Flow arrows (drawn first, under the cards) -->
+  <g fill="none" stroke="#9aa0b5" stroke-width="2.5" stroke-linecap="round">
+    <path d="M307,145 L398,145" marker-end="url(#arrow)"/>   <!-- context -> LLM -->
+    <path d="M560,145 L638,145" marker-end="url(#arrow)"/>   <!-- LLM -> probabilities -->
+  </g>
+  <text x="352" y="133" text-anchor="middle" font-size="13" fill="#9aa0b5">context in</text>
+  <text x="599" y="133" text-anchor="middle" font-size="13" fill="#9aa0b5">scores</text>
+
+  <!-- LEFT: context (tokens so far) -->
+  <g filter="url(#soft)">
+    <rect x="45" y="56" width="262" height="178" rx="16" fill="#cad3f5" stroke="#9aa3c2" stroke-width="1.5"/>
+  </g>
+  <text x="62" y="86" font-size="16" font-weight="600" fill="#5b6078">tokens so far &#8594;</text>
+  <!-- token chips, mono to read as literal text -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600">
+    <rect x="62"  y="98"  width="56" height="30" rx="8" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1"/>
+    <text x="90"  y="118" text-anchor="middle" fill="#16223a">Find</text>
+    <rect x="126" y="98"  width="44" height="30" rx="8" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1"/>
+    <text x="148" y="118" text-anchor="middle" fill="#16223a">me</text>
+    <rect x="178" y="98"  width="32" height="30" rx="8" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1"/>
+    <text x="194" y="118" text-anchor="middle" fill="#16223a">a</text>
+    <rect x="62"  y="138" width="78" height="30" rx="8" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1"/>
+    <text x="101" y="158" text-anchor="middle" fill="#16223a">senior</text>
+    <rect x="148" y="138" width="44" height="30" rx="8" fill="#8aadf4" stroke="#5b7fd6" stroke-width="1"/>
+    <text x="170" y="158" text-anchor="middle" fill="#16223a">Go</text>
+    <text x="204" y="160" font-size="22" font-weight="700" fill="#8087a2">&#9612;</text>  <!-- cursor: predict next -->
+  </g>
+  <text x="62" y="208" font-size="14" fill="#5b6078">1 token &#8776; 4 chars &#8776; &#190; of a word</text>
+
+  <!-- CENTER: the LLM engine (emphasized, mauve - same color as the Agent in the hub) -->
+  <g filter="url(#soft)">
+    <rect x="400" y="92" width="160" height="106" rx="18" fill="#c6a0f6" stroke="#9a6ee0" stroke-width="2.5"/>
+  </g>
+  <text x="480" y="140" text-anchor="middle" font-size="34" font-weight="700" fill="#241634">LLM</text>
+  <text x="480" y="164" text-anchor="middle" font-size="14" font-weight="600" fill="#3a2459">next-token</text>
+  <text x="480" y="182" text-anchor="middle" font-size="14" font-weight="600" fill="#3a2459">predictor</text>
+
+  <!-- RIGHT: next-token probability distribution -->
+  <g filter="url(#soft)">
+    <rect x="638" y="56" width="320" height="178" rx="16" fill="#cad3f5" stroke="#9aa3c2" stroke-width="1.5"/>
+  </g>
+  <text x="658" y="86" font-size="16" font-weight="600" fill="#5b6078">next-token probabilities</text>
+  <g font-size="16">
+    <!-- row 1: developer 0.52 -->
+    <text x="658" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#1b2335">developer</text>
+    <rect x="772" y="111" width="130" height="16" rx="5" fill="#aeb6d6"/>
+    <rect x="772" y="111" width="68"  height="16" rx="5" fill="#a6da95" stroke="#74b663" stroke-width="1"/>
+    <text x="946" y="124" text-anchor="end" font-weight="700" fill="#1b2335">0.52</text>
+    <!-- row 2: engineer 0.27 -->
+    <text x="658" y="161" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#1b2335">engineer</text>
+    <rect x="772" y="149" width="130" height="16" rx="5" fill="#aeb6d6"/>
+    <rect x="772" y="149" width="35"  height="16" rx="5" fill="#a6da95" stroke="#74b663" stroke-width="1"/>
+    <text x="946" y="162" text-anchor="end" font-weight="700" fill="#1b2335">0.27</text>
+    <!-- row 3: coder 0.11 -->
+    <text x="658" y="199" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#1b2335">coder</text>
+    <rect x="772" y="187" width="130" height="16" rx="5" fill="#aeb6d6"/>
+    <rect x="772" y="187" width="14"  height="16" rx="5" fill="#a6da95" stroke="#74b663" stroke-width="1"/>
+    <text x="946" y="200" text-anchor="end" font-weight="700" fill="#1b2335">0.11</text>
+  </g>
+
+  <!-- ===================== THE AUTOREGRESSIVE LOOP ===================== -->
+  <path d="M799,234 V288 Q799,304 783,304 H192 Q176,304 176,288 V236"
+        fill="none" stroke="#9aa0b5" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="828" y="252" font-size="13" fill="#9aa0b5">pick the top token</text>
+  <!-- the chosen token rides the loop back to the context -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="427" y="289" width="122" height="30" rx="8" fill="#a6da95" stroke="#74b663" stroke-width="1.5"/>
+    <text x="488" y="309" text-anchor="middle" font-size="15" font-weight="700" fill="#16280f">+ developer</text>
+  </g>
+  <text x="488" y="336" text-anchor="middle" font-size="14" fill="#9aa0b5">append it, then predict again &#8212; the autoregressive loop</text>
+</svg>

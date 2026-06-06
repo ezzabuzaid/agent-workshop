@@ -1,0 +1,9 @@
+theme:
+  name: catppuccin-macchiato
+
+options:
+  end_slide_shorthand: true
+  implicit_slide_end: false
+
+mermaid:
+  scale: 2
